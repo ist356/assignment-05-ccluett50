@@ -7,12 +7,12 @@ def clean_currency(item: str) -> float:
     item = float(item.replace('$', '').replace(',', ''))
     return item
 
-def extract_year_mdy(timestamp):
+def extract_year_mdy(timestamp) -> str:
     '''
     use the datatime.strptime to parse the date and then extract the year
     '''
     timestamp = datetime.strptime(timestamp, '%m/%d/%Y %H:%M:%S')
-    return timestamp.year
+    return str(timestamp.year)
 
 def clean_country_usa(item: str) ->str:
     '''
