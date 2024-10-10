@@ -41,4 +41,9 @@ def upload_file(file_name, bucket_name, object_name=None):
 
 if __name__ == '__main__':
     #TODO: Write your load code here (remove pass first)
-    pass
+    path = r'C:\Users\conno\OneDrive - Syracuse University\Fall 2024\IST 356\ist356\assignment 5\assignment-05-ccluett50\code'
+    files = [f'{path}/cache/survey_dataset.csv', f'{path}/cache/annual_salary_adjusted_by_location_and_age.csv', f'{path}/cache/annual_salary_adjusted_by_location_and_education.csv']
+    bucket = "ist356cpcluett"
+    for file in files:
+        obj = os.path.basename(file)
+        upload_file(file, bucket, obj)
