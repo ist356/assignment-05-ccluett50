@@ -22,7 +22,7 @@ us_name_df = pd.read_csv("https://docs.google.com/spreadsheets/d/14wvnQygIX1eCVo
 # Clean the data
 survey_df['year'] = survey_df['Timestamp'].apply(pl.extract_year_mdy)
 
-survey_df['What country do you work in?'] = survey_df['What country do you work in?'].apply(pl.clean_country_usa)
+#survey_df['What country do you work in?'] = survey_df['What country do you work in?'].apply(pl.clean_country_usa)
 
 # Save the data
 path = r"C:\Users\conno\OneDrive - Syracuse University\Fall 2024\IST 356\ist356\assignment 5\assignment-05-ccluett50\code"
@@ -35,10 +35,14 @@ us_name_df.to_csv(f'{path}/cache/states.csv', index=False)
 years = survey_df['year'].unique()
 
 for year in years:
-    url = f"https://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title={year}"
+    url = f"https://www.numbeo.com/cost-of-living/rankings.jsp?title={year}&displayColumn=0"
     col_df = pd.read_html(url)[1]
     col_df['year'] = str(year)
     col_df.to_csv(f'{path}/cache/col_{year}.csv', index=False)
-    st.dataframe(col_df)
+
+
+# Save the data
+st.dataframe(survey_df)
+st.dataframe(us_name_df)
 
 
