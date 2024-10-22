@@ -11,8 +11,8 @@ def extract_year_mdy(timestamp) -> str:
     '''
     use the datatime.strptime to parse the date and then extract the year
     '''
-    timestamp = datetime.strptime(timestamp, '%m/%d/%Y %H:%M:%S')
-    return str(timestamp.year)
+    timestamp1 = datetime.strptime(timestamp, '%m/%d/%Y %H:%M:%S')
+    return int(timestamp1.strftime('%Y'))
 
 def clean_country_usa(item: str) ->str:
     '''
